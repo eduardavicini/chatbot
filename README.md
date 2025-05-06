@@ -1,23 +1,26 @@
-# Chatbot de Receitas
+# 🤖🍽️ Chatbot de Receitas
 
-Este é um chatbot simples criado em Python, que sugere receitas com base no que o usuário deseja cozinhar. Ele utiliza interações no terminal e responde com receitas específicas.
+Bem-vindo ao **Chatbot de Receitas**, um projeto feito 100% em **Python** 🐍 que te ajuda a escolher **o que cozinhar hoje** de forma simples e divertida — direto no **terminal**! 🎉
 
-## Funcionalidade
+## 🧠 Como funciona?
 
-- O chatbot interage com o usuário via terminal.
-- O usuário pode pedir receitas, e o chatbot responde com a receita correspondente.
-- Caso a receita não esteja disponível, o chatbot pede para tentar outra receita.
+1. O chatbot começa dizendo: _"Olá! O que você quer cozinhar hoje?"_ 👩‍🍳  
+2. Você digita algo como **"bolo de cenoura"** 🎂 ou **"lasanha"** 🍝.  
+3. Ele responde com a **receita completa** ou pede para tentar outra caso não conheça 🍲.
 
-## Tecnologias Utilizadas
+## 🧰 Tecnologias usadas
 
-- **Python**: Linguagem de programação utilizada para criar o chatbot.
-- **Entrada e Saída no Terminal**: O chatbot interage com o usuário diretamente pelo terminal ou prompt de comando.
+- 🐍 **Python 3**
+- 🖥️ Terminal/Prompt de comando
+- 💬 Entrada e saída de texto (`input()` e `print()`)
 
-## Como Rodar o Projeto
+## ▶️ Como rodar o projeto
 
-### 1. Clonar o Repositório
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/seu-usuario/chatbot_receitas.git
 cd chatbot_receitas
+
+
 
