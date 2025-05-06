@@ -1,6 +1,6 @@
 # 🤖🍽️ Chatbot de Receitas
 
-Bem-vindo ao **Chatbot de Receitas**, um projeto feito 100% em **Python** 🐍 que te ajuda a escolher **o que cozinhar hoje** de forma simples e divertida — direto no **terminal**! 🎉
+Bem-vindo ao **Chatbot de Receitas**, um projeto feito 100% em **Python** 🐍 que te ajuda a escolher **o que cozinhar hoje** de forma simples e divertida! 🎉
 
 ## 🧠 Como funciona?
 
