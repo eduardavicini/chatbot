@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-recipes = {
+class Bot:
+    def __init__(self, name="ChefBot"):
+        self.name = name
+        self.recipes = {
     "bolo de cenoura": "🍰 Receita de Bolo de Cenoura:<br>Ingredientes:<br>- 3 cenouras médias<br>- 4 ovos<br>- 1 xícara de óleo<br>- 2 xícaras de açúcar<br>- 2 e 1/2 xícaras de farinha<br>- 1 colher de fermento<br><br>Modo de preparo:<br>Bata as cenouras, ovos e óleo no liquidificador. Misture com os ingredientes secos. Asse por 40 minutos a 180°C.",
     "lasanha": "🍝 Receita de Lasanha:<br>Ingredientes:<br>- Massa de lasanha<br>- Molho de tomate<br>- Presunto e queijo<br>- Carne moída<br>- Temperos a gosto<br><br>Modo de preparo:<br>Monte camadas com molho, massa, carne e queijo. Asse por 30 minutos a 200°C.",
     "panqueca": "🥞 Receita de Panqueca:<br>Ingredientes:<br>- 1 ovo<br>- 1 xícara de leite<br>- 1 xícara de farinha<br><br>Modo de preparo:<br>Misture tudo, frite em frigideira antiaderente, recheie e enrole.",
