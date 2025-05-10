@@ -1,25 +1,105 @@
-class Bot:
-    def __init__(self, name="ChefBot"):
-        self.name = name
-        self.recipes = {
-    "bolo de cenoura": "🍰 Receita de Bolo de Cenoura:<br>Ingredientes:<br>- 3 cenouras médias<br>- 4 ovos<br>- 1 xícara de óleo<br>- 2 xícaras de açúcar<br>- 2 e 1/2 xícaras de farinha<br>- 1 colher de fermento<br><br>Modo de preparo:<br>Bata as cenouras, ovos e óleo no liquidificador. Misture com os ingredientes secos. Asse por 40 minutos a 180°C.",
-    "lasanha": "🍝 Receita de Lasanha:<br>Ingredientes:<br>- Massa de lasanha<br>- Molho de tomate<br>- Presunto e queijo<br>- Carne moída<br>- Temperos a gosto<br><br>Modo de preparo:<br>Monte camadas com molho, massa, carne e queijo. Asse por 30 minutos a 200°C.",
-    "panqueca": "🥞 Receita de Panqueca:<br>Ingredientes:<br>- 1 ovo<br>- 1 xícara de leite<br>- 1 xícara de farinha<br><br>Modo de preparo:<br>Misture tudo, frite em frigideira antiaderente, recheie e enrole.",
-    "arroz": "🍚 Receita de Arroz:<br>Ingredientes:<br>- 1 xícara de arroz<br>- 2 xícaras de água<br>- Alho, óleo e sal<br><br>Modo de preparo:<br>Refogue o alho no óleo, adicione o arroz, frite um pouco, coloque a água e o sal, e cozinhe até secar.",
-    "obrigada": "Obrigada! Fico feliz que tenha gostado! 😊",
-    "obrigado": "Obrigada! Fico feliz que tenha gostado! 😊",
-    "gostei": "Obrigada! Fico feliz que tenha gostado! 😊",
-    "amei": "Obrigada! Fico feliz que tenha gostado! 😊",
-    "tchau": "Tchau! Até a próxima receita! 👋"
+from flask import Flask, render_template, request, jsonify
+import random
+
+app = Flask(__name__)
+
+# Base de receitas conhecidas
+receitas = {
+    "bolo de cenoura": {
+        "texto": """
+🍰 Receita de Bolo de Cenoura
+
+📝 Ingredientes:
+- 3 cenouras médias
+- 4 ovos
+- 1 xícara de óleo
+- 2 xícaras de açúcar
+- 2 e 1/2 xícaras de farinha de trigo
+- 1 colher (sopa) de fermento em pó
+
+🍫 Cobertura:
+- 1 colher (sopa) de manteiga
+- 3 colheres (sopa) de chocolate em pó
+- 1 xícara de açúcar
+- 1/2 xícara de leite
+
+👩‍🍳 Modo de preparo:
+1. Bata as cenouras, ovos e óleo no liquidificador.
+2. Transfira para uma tigela e misture o açúcar, a farinha e o fermento.
+3. Coloque em uma forma untada e leve ao forno pré-aquecido a 180°C por 40 minutos.
+4. Para a cobertura, leve todos os ingredientes ao fogo até engrossar e jogue sobre o bolo.
+
+📺 Vídeo: https://www.youtube.com/watch?v=tgShdcf9WYI
+"""
+    },
+    "panqueca": {
+        "texto": """
+🥞 Receita de Panqueca
+
+📝 Ingredientes da massa:
+- 1 xícara de farinha de trigo
+- 1 xícara de leite
+- 1 ovo
+- 1 pitada de sal
+
+👩‍🍳 Modo de preparo da massa:
+1. Bata todos os ingredientes no liquidificador.
+2. Unte uma frigideira com um pouco de óleo.
+3. Despeje uma concha da massa, espalhe e frite dos dois lados.
+
+📌 Recheie com carne moída, frango ou queijo e cubra com molho de tomate.
+
+📺 Vídeo: https://www.youtube.com/watch?v=LoZHkdKcDDU
+"""
+    },
+    "lasanha": {
+        "texto": """
+🍝 Receita de Lasanha à Bolonhesa
+
+📝 Ingredientes:
+- Massa de lasanha
+- 500g de carne moída
+- 1 cebola picada
+- 2 dentes de alho
+- 1 sachê de molho de tomate
+- Queijo e presunto
+- Sal, pimenta e orégano a gosto
+
+👩‍🍳 Modo de preparo:
+1. Refogue a cebola e o alho, depois adicione a carne.
+2. Acrescente o molho e deixe cozinhar por 10 minutos.
+3. Monte as camadas: molho, massa, presunto, queijo e repita.
+4. Finalize com queijo e leve ao forno por 30 minutos a 200°C.
+
+📺 Vídeo: https://www.youtube.com/watch?v=OmfX3x03hi8
+"""
+    }
 }
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/')
 def index():
-    resposta = "🍽️ Olá! O que você quer cozinhar hoje?"
-    if request.method == "POST":
-        user_input = request.form["mensagem"].lower()
-        resposta = recipes.get(user_input, "Desculpe, ainda não tenho essa receita. Tente outra! 😊")
-    return render_template("index.html", resposta=resposta)
+    return render_template('index.html')
 
-if __name__ == "__main__":
+@app.route('/mensagem', methods=['POST'])
+def mensagem():
+    data = request.get_json()
+    mensagem = data.get('mensagem', '').strip().lower()
+
+    if mensagem in ["obrigado", "obrigada", "valeu", "agradecido"]:
+        return jsonify({"resposta": "Fico feliz que tenha gostado! 😊 Se precisar de mais receitas, é só chamar."})
+
+    for chave, valor in receitas.items():
+        if chave in mensagem:
+            return jsonify({"resposta": valor["texto"]})
+
+    # Se não encontrou a receita
+    sugestoes = ', '.join(random.sample(list(receitas.keys()), min(3, len(receitas))))
+    texto_resposta = (
+        f"Desculpe, ainda não conheço a receita de \"{mensagem}\".\n\n"
+        f"Mas posso te ajudar com: {sugestoes}."
+    )
+    return jsonify({"resposta": texto_resposta})
+
+if __name__ == '__main__':
     app.run(debug=True)
+
