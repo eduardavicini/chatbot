@@ -10,10 +10,6 @@
 - Estilização profissional com CSS customizado  
 - Layout otimizado para experiência do usuário  
 
-## 🖼️ Visual
-
-O design foi pensado com tons escuros, degradês sutis e um toque clean e minimalista, inspirado nas melhores interfaces de chatbot utilizadas no mercado.
-
 ## 🚀 Como rodar o projeto localmente
 
 Clone este repositório:
