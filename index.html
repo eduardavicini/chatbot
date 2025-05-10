@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Leo | Chefbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .chat-wrapper {
+            background-color: #fff;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #ff69b4;
+        }
+
+        .chat-box {
+            background-color: #fafafa;
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .bubble {
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 16px;
+            max-width: 80%;
+            line-height: 1.5;
+            color: #333;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+
+        .user .bubble {
+            background-color: #ff69b4;
+            color: white;
+            margin-left: auto;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 16px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        input[type="submit"] {
+            background-color: #ff69b4;
+            color: white;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e055a0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-wrapper">
+        <div class="chat-header">Leo | Chefbot</div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712106.png" alt="Bot Avatar" class="avatar" style="background-color: #ff69b4; padding: 5px;">
+                <div class="bubble">Olá! O que você quer cozinhar hoje?</div>
+            </div>
+        </div>
+
+        <form id="chatForm">
+            <input type="text" name="mensagem" id="userMessage" placeholder="Ex: bolo de cenoura..." required>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const chatBox = document.getElementById('chatBox');
+        const userMessageInput = document.getElementById('userMessage');
+
+        chatForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const userMessage = userMessageInput.value.trim();
+
+            if (userMessage) {
+                // Adiciona mensagem do usuário
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('message', 'user');
+                userMessageDiv.innerHTML = `<div class="bubble">${userMessage}</div>`;
+                chatBox.appendChild(userMessageDiv);
+
+                // Scroll para o final
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                // Envia mensagem ao servidor
+                const response = await fetch('/mensagem', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ mensagem: userMessage })
+                });
+
+                const data = await response.json();
+                const botResponse = data.resposta;
+
+                // Exibe a resposta do bot
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot');
+                botMessageDiv.innerHTML = `
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712106.png" alt="Bot Avatar" class="avatar" style="background-color: #ff69b4; padding: 5px;">
+                    <div class="bubble">${botResponse}</div>
+                `;
+                chatBox.appendChild(botMessageDiv);
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                userMessageInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
