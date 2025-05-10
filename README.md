@@ -1,26 +1,27 @@
-# 🤖🍽️ Chatbot de Receitas
+# 🤖 Leo: Seu Assistente de Receitas
 
-Bem-vindo ao **Chatbot de Receitas**, um projeto feito 100% em **Python** 🐍 que te ajuda a escolher **o que cozinhar hoje** de forma simples e divertida! 🎉
+**Leo** é um chatbot moderno e funcional, projetado para auxiliar usuários a encontrarem receitas de forma prática e interativa. Com um visual profissional e sofisticado, Leo une design clean com usabilidade eficiente.
 
-## 🧠 Como funciona?
+## 💡 Funcionalidades
 
-1. O chatbot começa dizendo: _"Olá! O que você quer cozinhar hoje?"_ 👩‍🍳  
-2. Você digita algo como **"bolo de cenoura"** 🎂 ou **"lasanha"** 🍝.  
-3. Ele responde com a **receita completa** ou pede para tentar outra caso não conheça 🍲.
+- Interface moderna e responsiva  
+- Formulário de entrada para busca de receitas  
+- Respostas personalizadas com sugestões de pratos  
+- Estilização profissional com CSS customizado  
+- Layout otimizado para experiência do usuário  
 
-## 🧰 Tecnologias usadas
+## 🖼️ Visual
 
-- 🐍 **Python 3**
-- 🖥️ Terminal/Prompt de comando
-- 💬 Entrada e saída de texto (`input()` e `print()`)
+O design foi pensado com tons escuros, degradês sutis e um toque clean e minimalista, inspirado nas melhores interfaces de chatbot utilizadas no mercado.
 
-## ▶️ Como rodar o projeto
+## 🚀 Como rodar o projeto localmente
 
-### 1. Clone o repositório
+Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/chatbot_receitas.git
-cd chatbot_receitas
+git clone https://github.com/seu-usuario/leo-assistente-receitas.git
+cd leo-assistente-receitas
+
 
 
 
