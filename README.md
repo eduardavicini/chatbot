@@ -1,22 +1,24 @@
-# 🤖 Leo: Seu Assistente de Receitas
+# 🧑‍🍳 Leo | Chefbot
 
-**Leo** é um chatbot moderno e funcional, projetado para auxiliar usuários a encontrarem receitas de forma prática e interativa. Com um visual profissional e sofisticado, Leo une design clean com usabilidade eficiente.
+**Leo | Chefbot** é um assistente virtual de receitas culinárias que interage com o usuário de forma simples, eficiente e amigável. Basta digitar o nome de um prato, e o bot responde com uma receita completa: ingredientes, modo de preparo e até sugestões de vídeo no YouTube.
 
-## 💡 Funcionalidades
+## ✨ Funcionalidades
 
-- Interface moderna e responsiva  
-- Formulário de entrada para busca de receitas  
-- Respostas personalizadas com sugestões de pratos  
-- Estilização profissional com CSS customizado  
-- Layout otimizado para experiência do usuário  
+- Respostas automáticas com receitas detalhadas;
+- Receitas organizadas por etapas: ingredientes, preparo e links de vídeo;
+- Mensagens de agradecimento personalizadas;
+- Interface moderna, leve e responsiva.
 
-## 🚀 Como rodar o projeto localmente
+## 💻 Tecnologias utilizadas
 
-Clone este repositório:
+- **Python** com **Flask** – Backend responsável por processar mensagens e gerar respostas.
+- **HTML**, **CSS** e **JavaScript** – Frontend com layout limpo e envio de mensagens via `fetch`, sem recarregar a página.
 
-```bash
-git clone https://github.com/seu-usuario/leo-assistente-receitas.git
-cd leo-assistente-receitas
+## 📦 Como executar o projeto
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/leo-chefbot.git
 
 
 
