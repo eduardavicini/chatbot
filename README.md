@@ -29,10 +29,13 @@ Recrutadores e devs: este projeto combina **lógica backend com uma interface li
 
 ## Estrutura do Projeto
 
+```plaintext
 leo-chefbot/
 ├── app.py
 └── templates/
     └── index.html
+```
+
 
 
 
