@@ -1,24 +1,40 @@
 # 🧑‍🍳 Leo | Chefbot
 
-**Leo | Chefbot** é um assistente virtual de receitas culinárias que interage com o usuário de forma simples, eficiente e amigável. Basta digitar o nome de um prato, e o bot responde com uma receita completa: ingredientes, modo de preparo e até sugestões de vídeo no YouTube.
+**Leo | Chefbot** é um assistente virtual inteligente que transforma dúvidas como “o que cozinhar hoje?” em **respostas práticas, rápidas e deliciosas**. Basta digitar o nome de um prato e pronto: Leo retorna uma receita completa, com ingredientes, modo de preparo e até sugestões de vídeo no YouTube. Tudo isso com uma interface moderna, fluida e pensada para proporcionar uma experiência simples e encantadora.
+
+---
+
+## 💡 Por que esse projeto é relevante?
+
+Leo foi criado para resolver um problema real: **a indecisão na cozinha e o tempo perdido buscando boas receitas na internet**. Com poucos cliques, o usuário acessa uma receita completa, organizada em etapas claras, de forma interativa e acessível.  
+
+Recrutadores e devs: este projeto combina **lógica backend com uma interface limpa**, demonstrando domínio em front + back, além de atenção à usabilidade e experiência do usuário — pontos essenciais em qualquer aplicação web moderna.
+
+---
 
 ## ✨ Funcionalidades
 
-- Respostas automáticas com receitas detalhadas;
-- Receitas organizadas por etapas: ingredientes, preparo e links de vídeo;
-- Mensagens de agradecimento personalizadas;
-- Interface moderna, leve e responsiva.
+- Busca inteligente por nome de prato  
+- Retorno de receitas detalhadas e organizadas  
+- Sugestões de vídeo para acompanhamento visual  
+- Mensagens de interação amigáveis e personalizadas  
+- Layout moderno, leve e responsivo
+
+---
 
 ## 💻 Tecnologias utilizadas
 
-- **Python** com **Flask** – Backend responsável por processar mensagens e gerar respostas.
-- **HTML**, **CSS** e **JavaScript** – Frontend com layout limpo e envio de mensagens via `fetch`, sem recarregar a página.
+- **Python 3 + Flask** — Estrutura backend, lógica e rotas da aplicação  
+- **HTML5**
 
-## 📦 Como executar o projeto
+## Estrutura do Projeto
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/leo-chefbot.git
+leo-chefbot/
+├── app.py
+└── templates/
+    └── index.html
+
+
 
 
 
