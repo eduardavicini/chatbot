@@ -8,8 +8,6 @@ O **Leo | Chefbot** é um chatbot culinário desenvolvido com Python e Flask. El
 - Python 3
 - Flask
 - HTML e CSS
-- JavaScript (se houver)
-- Jinja2 Templates
 
 ---
 
